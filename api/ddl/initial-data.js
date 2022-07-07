@@ -1,3 +1,1 @@
-function push {
-  do something cool;  
-}
+const { initdata } = require("objection");

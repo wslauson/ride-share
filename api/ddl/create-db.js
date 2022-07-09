@@ -16,6 +16,7 @@ async function buildTable(tableName) {
             table.timestamps();
           });
         console.log(`table ${tableName} created`);
+       
     }
     catch(err) {
         console.log(`Oops, no table: ${err}`); 

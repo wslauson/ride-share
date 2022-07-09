@@ -10,38 +10,38 @@ const knex = require('knex')({
 //boilerplate from knex manual
 async function buildTable(tableName) {
     try {
-        newTable = await knex.schema.createTable(tableName, function (table) {
+        await knex.schema.createTable(tableName, (table) => {
             table.increments();
             table.string('name');
             table.timestamps();
-          })
-        console.log(newTable)
+          });
+        console.log(`table ${tableName} created`);
     }
     catch(err) {
-        console.log(`Oops: ${err}`);
-        knex.destroy();
+        console.log(`Oops, no table: ${err}`); 
     }
 }
 
 async function destroyTable(tableName) {
     try {
         await knex.schema.dropTableIfExists(tableName);
-        console.log(`${tableName} dropped!`);
+        console.log(`table ${tableName} dropped!`);
     }
     catch(err) {
         console.log(`Failed to drop table: ${err}`);
-        knex.destroy();
     }
 }
 
 async function doStuff() {
     try {
-        await buildTable('second');
-        await destroyTable('second');
+        let result = await buildTable('second');
+        if (result !== undefined) {
+            await destroyTable('second');
+        }
     }
     catch(err) {
         console.log(`Oops: ${err}`);
-        knex.destroy();
+        await knex.destroy();
     }
 }
 

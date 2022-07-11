@@ -1,1 +1,0 @@
-const { initdata } = require("objection");

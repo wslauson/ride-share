@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "knex": "^2.1.0",
+    "objection": "^3.0.1",
+    "pg": "^8.7.3",
+    "sqlite3": "^5.0.8"
+  }
+}
